@@ -19,8 +19,6 @@
 	<script src="https://kit.fontawesome.com/bf95ccfc20.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.0.1/chartjs-plugin-annotation.min.js"></script>
-	<!--<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>-->
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js" integrity="sha512-klQv6lz2YR+MecyFYMFRuU2eAl8IPRo6zHnsc9n142TJuJHS8CG0ix4Oq9na9ceeg1u5EkBfZsFcV3U7J51iew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
 	<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
 
     <style>
@@ -43,8 +41,10 @@
 			background: rgba(255,255,255,0.8);
 			box-shadow: 0 0 15px rgb(0 0 0 / 20%);
 			border-radius: 5px;
-			width: 100px;
-			height: 210px;
+			/* width: 100px;
+			height: 210px; */
+			width: 85%;
+			height: 20%;
 		}
 
 		.info-timeseries {
@@ -67,11 +67,6 @@
 			right: 10px;
 			width: 75%;
 			height: 28%;
-			/*background-color: white;
-					border-radius: 5px;
-					border-color: gray;
-					border-style: solid;
-					border-width: 1px 1px 1px 1px;*/
 			opacity: 0.8;
 			text-align: center;
 			z-index: 500;
@@ -79,8 +74,6 @@
 		}
 
 		div#barChartContainer {
-			/* display: flex;
-					align-items:flex-end;*/
 			font: 14px/16px Arial, Helvetica, sans-serif;
 			display: inline-block;
 			bottom: 5px;
@@ -89,18 +82,13 @@
 			width: 24%;
 			height: 98%;
 			float: right;
-			/*background-color: white;
-					border-radius: 5px;
-					border-color: gray;
-					border-style: solid;
-					border-width: 1px 1px 1px 1px;*/
 			opacity: 0.8;
 			text-align: left;
 			z-index: 500;
 		}
 
         #controls {
-            width: 22%;
+            width: 100%;
             float: right;
             padding: 10px;
         }
@@ -135,7 +123,7 @@
 			margin-right: 0px !important;
 		}
 
-			#refreshBtn {
+		#refreshBtn {
 			display: none;
 			position: absolute;
 			top: 40px;
@@ -156,36 +144,34 @@
 </head>
 <body>
 
-    <div id="controls">
-        <h2><label id="lblName"> Mwea Irrigation Scheme </label></h2>
-        <label for="variableSelector">Select Variable:</label>
-        <select id="variableSelector">
-            <option value="beneficial_fraction">Beneficial Fraction</option>
-            <option value="crop_water_deficit">Crop Water Deficit</option>
-            <option value="relative_water_deficit">Relative Water Deficit</option>
-            <option value="total_seasonal_biomass_production">Total Seasonal Biomass Production</option>
-            <option value="seasonal_yield">Seasonal Yield</option>
-            <option value="crop_water_productivity">Crop Water Productivity</option>
-        </select>
-
-        <label for="yearSelector">Select Year:</label>
-        <select id="yearSelector"></select>
-
-        <label for="statSelector">Select Statistic:</label>
-        <select id="statSelector">
-            <option value="mean">Mean</option>
-            <option value="min">Min</option>
-            <option value="max">Max</option>
-            <option value="std">Standard Deviation</option>
-        </select>
-
-    </div>
-
     
-	<button id="refreshBtn" onclick="updateMap()">Back to Sections</button>
-    <div id="map"></div>
+    <div id="map">
+		<button id="refreshBtn" onclick="updateMap()">Back to Sections</button>
+	</div>
     <div id="barChartContainer">
-        <!-- <h2><label id="kk"> test</label></h2> -->
+		<div id="controls">
+			<h2><label id="lblName"> Mwea Irrigation Scheme </label></h2>
+			<label for="variableSelector">Select Variable:</label>
+			<select id="variableSelector">
+				<option value="beneficial_fraction">Beneficial Fraction</option>
+				<option value="crop_water_deficit">Crop Water Deficit</option>
+				<option value="relative_water_deficit">Relative Water Deficit</option>
+				<option value="total_seasonal_biomass_production">Total Seasonal Biomass Production</option>
+				<option value="seasonal_yield">Seasonal Yield</option>
+				<option value="crop_water_productivity">Crop Water Productivity</option>
+			</select>
+	
+			<label for="yearSelector">Select Year:</label>
+			<select id="yearSelector"></select>
+	
+			<label for="statSelector">Select Statistic:</label>
+			<select id="statSelector">
+				<option value="mean">Mean</option>
+				<option value="min">Min</option>
+				<option value="max">Max</option>
+				<option value="std">Standard Deviation</option>
+			</select>
+		</div>
 		<div id="barChartArea" style="height:250px !important;">
 			<canvas id="barChart"></canvas>
 		</div>
@@ -195,14 +181,9 @@
 		<canvas id="myChart"></canvas>
 	</div>
 
-    <div id="lineChartContainer" style="display:none">
-		<canvas id="lineChart"></canvas>
-	</div>
-
     <script src="./data/ipa_sections.js"></script>
     <script src="./data/ipa_blocks.js"></script>
     <script src="./js/chart.js"></script>
     <script src="./js/maps.js"></script>
-    <!-- <script src="./js/includinglineandbarcharts.js"></script> Ensure this points to your JavaScript file -->
 </body>
 </html>
