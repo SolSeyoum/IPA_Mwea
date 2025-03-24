@@ -115,6 +115,10 @@ function updateMap() {
     showHide("chartArea");     
     getBarChartData('0', selectedVariable, selectedYear, selectedStat);
     indicator = selectedVariable;
+    let { min, max } = getMinMaxValues(geojsonData, selectedVariable, selectedYear, selectedStat);
+    minL= min;
+    maxL= max;
+    info.update(); // Update legend label
 }
 
 // Find min and max values dynamically
